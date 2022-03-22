@@ -1,0 +1,15 @@
+{
+  "name": "storefront",
+  "version": "1.0.0",
+  "description": "storefront backend project",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "emadunan",
+  "license": "ISC",
+  "devDependencies": {
+    "db-migrate": "^0.11.13",
+    "db-migrate-pg": "^1.2.2"
+  }
+}
