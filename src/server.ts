@@ -1,8 +1,11 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, Application } from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 
-const app = express();
+// import routes
+import userRoutes from "./handlers/user";
+
+const app: Application = express();
 
 // Middleware setup
 app.use(bodyParser.json());
@@ -10,6 +13,9 @@ app.use(bodyParser.json());
 app.get("/", (_req: Request, res: Response) => {
     res.status(200).json({ message: "this is the main url" });
 });
+
+// App routes
+userRoutes(app);
 
 /* Web server start */
 // Extract the host name and the port number from the environment variables
