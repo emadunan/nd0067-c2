@@ -23,7 +23,7 @@ describe("User model tests", () => {
             const user: User = {
                 firstname: "emad",
                 lastname: "younan",
-                password: "password",
+                password: "passw0rd",
             };
 
             const result = await store.create(user);
@@ -31,7 +31,7 @@ describe("User model tests", () => {
                 id: 1,
                 firstname: "emad",
                 lastname: "younan",
-                password: "password",
+                password: "passw0rd",
             });
         });
     });
@@ -47,7 +47,7 @@ describe("User model tests", () => {
                 id: 1,
                 firstname: "emad",
                 lastname: "younan",
-                password: "password",
+                password: "passw0rd",
             });
         });
     });
@@ -106,6 +106,22 @@ describe("User model tests", () => {
         it("The created user has been already deleted", async () => {
             const result = await store.index();
             expect(result).toEqual([]);
+        });
+
+        it("Create a new user after deletion and return it", async () => {
+            const user: User = {
+                firstname: "emad",
+                lastname: "younan",
+                password: "passw0rd",
+            };
+
+            const result = await store.create(user);
+            expect(result).toEqual({
+                id: 2,
+                firstname: "emad",
+                lastname: "younan",
+                password: "passw0rd",
+            });
         });
     });
 });

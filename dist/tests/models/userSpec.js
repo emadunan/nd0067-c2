@@ -29,14 +29,14 @@ describe("User model tests", () => {
             const user = {
                 firstname: "emad",
                 lastname: "younan",
-                password: "password",
+                password: "passw0rd",
             };
             const result = yield store.create(user);
             expect(result).toEqual({
                 id: 1,
                 firstname: "emad",
                 lastname: "younan",
-                password: "password",
+                password: "passw0rd",
             });
         }));
     });
@@ -50,7 +50,7 @@ describe("User model tests", () => {
                 id: 1,
                 firstname: "emad",
                 lastname: "younan",
-                password: "password",
+                password: "passw0rd",
             });
         }));
     });
@@ -101,6 +101,20 @@ describe("User model tests", () => {
         it("The created user has been already deleted", () => __awaiter(void 0, void 0, void 0, function* () {
             const result = yield store.index();
             expect(result).toEqual([]);
+        }));
+        it("Create a new user after deletion and return it", () => __awaiter(void 0, void 0, void 0, function* () {
+            const user = {
+                firstname: "emad",
+                lastname: "younan",
+                password: "passw0rd",
+            };
+            const result = yield store.create(user);
+            expect(result).toEqual({
+                id: 2,
+                firstname: "emad",
+                lastname: "younan",
+                password: "passw0rd",
+            });
         }));
     });
 });
