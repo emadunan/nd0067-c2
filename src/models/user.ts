@@ -12,7 +12,7 @@ export class UserStore {
     async index(): Promise<User[]> {
         try {
             const conn = await db.connect();
-            const sql = "SELECT * FROM users";
+            const sql = "SELECT id, firstname, lastname FROM users";
             const result = await conn.query(sql);
             conn.release();
             return result.rows;

@@ -8,8 +8,7 @@ CREATE TABLE users (
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50),
-    price FLOAT,
-    category VARCHAR(50)
+    price FLOAT
 );
 
 CREATE TABLE orders (

@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 
 // import routes
 import userRoutes from "./handlers/user";
+import productRoutes from "./handlers/product";
+import orderRoutes from "./handlers/order";
 
 const app: Application = express();
 
@@ -16,6 +18,8 @@ app.get("/", (_req: Request, res: Response) => {
 
 // App routes
 userRoutes(app);
+productRoutes(app);
+orderRoutes(app);
 
 /* Web server start */
 // Extract the host name and the port number from the environment variables

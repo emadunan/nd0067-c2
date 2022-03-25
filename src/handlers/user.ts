@@ -162,18 +162,17 @@ async function destroy(req: Request, res: Response) {
 }
 
 async function authenticate(req: Request, res: Response) {
-    // Extract the user id and password from the request
-    const id = parseInt(req.params.id as string);
-    const password = req.body.password as string;
+    try {
+        // Extract the user id and password from the request
+        const id = parseInt(req.params.id as string);
+        const password = req.body.password as string;
 
-    // Create JWT
-    const token = await generateJWT(id, password);
-    if (token) {
+        // Create JWT
+        const token = await generateJWT(id, password);
         res.json(token);
-        return;
+    } catch (error) {
+        res.json("Invalid id or password");
     }
-
-    res.json("Invalid username or password");
 }
 
 export default user_routes;

@@ -8,7 +8,9 @@
     "lint:f": "npx eslint src/** --fix",
     "build": "npx tsc",
     "watch": "npx nodemon src/server",
-    "test": "SET ENV=test && npx db-migrate --env test up && tsc && npx jasmine && npx db-migrate --env test reset"
+    "debug": "npx nodemon --watch src/server.ts -e ts --exec node --inspect -r ts-node/register src/server.ts",
+    "test": "SET ENV=test && npx db-migrate --env test up && tsc && npx jasmine && npx db-migrate --env test reset",
+    "start": "node dist/server"
   },
   "author": "emadunan",
   "license": "ISC",
