@@ -49,6 +49,35 @@ export class OrderStore {
         }
     }
 
+    async user_order_products(userId: number, status: string) {
+        const sql1 =
+            "SELECT orders.id, orders.status FROM orders WHERE user_id=$1 AND status=$2";
+        const sql2 =
+            "SELECT products.name, products.price, order_products.quantity FROM order_products JOIN orders ON order_products.order_id = orders.id JOIN products ON order_products.product_id = products.id WHERE user_id=$1 AND status=$2 AND orders.id = $3";
+        try {
+            // Get all orders performed by a specific user
+            const conn = await db.connect();
+            const result = await conn.query(sql1, [userId, status]);
+            conn.release();
+
+            // Fetch all products loaded to every order
+            const orders = result.rows;
+            for (const order of orders) {
+                const conn = await db.connect();
+                const prodResult = await conn.query(sql2, [
+                    userId,
+                    status,
+                    order.id,
+                ]);
+                order.products = prodResult.rows;
+                conn.release();
+            }
+            return orders;
+        } catch (error) {
+            throw new Error(error as string);
+        }
+    }
+
     async create(userId: number): Promise<Order> {
         const setPrevOrdersToComeleted =
             "UPDATE orders SET status='complete' WHERE user_id=$1";

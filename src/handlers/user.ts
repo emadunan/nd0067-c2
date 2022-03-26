@@ -169,9 +169,13 @@ async function authenticate(req: Request, res: Response) {
 
         // Create JWT
         const token = await generateJWT(id, password);
+
+        if (!token) {
+            res.status(401).json("Invalid id or password");
+        }
         res.json(token);
     } catch (error) {
-        res.json("Invalid id or password");
+        res.status(401).json(error);
     }
 }
 

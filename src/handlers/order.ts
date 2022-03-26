@@ -35,7 +35,7 @@ async function index(req: Request, res: Response) {
             return;
         }
 
-        const orders = await store.user_orders(userId, status);
+        const orders = await store.user_order_products(userId, status);
         res.status(200).json(orders);
     } catch (error) {
         res.status(404).json(error);

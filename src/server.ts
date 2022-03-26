@@ -32,3 +32,5 @@ const host = HOST as string;
 app.listen(port, host, () => {
     console.log(`Listening on port #${port}...`);
 });
+
+export default app;
