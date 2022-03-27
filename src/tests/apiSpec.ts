@@ -425,12 +425,10 @@ describe("Product Handler endpoint tests", () => {
     });
 });
 
-// GET /users/:userId/orders/:status
-// POST /users/:userId/orders
 
 // Order Endpoints Tests
 describe("Order Handler endpoint tests", () => {
-    // POST /products Endpoint tests
+    // POST /users/:userId/orders Endpoint tests
     describe("POST /users/:userId/orders Endpoint tests", () => {
         it("responds with status code 401 Unauthorized", async () => {
             const response = await request.post("/users/2/orders");
@@ -463,7 +461,7 @@ describe("Order Handler endpoint tests", () => {
         });
     });
 
-    // GET /products Endpoint tests
+    // GET /users/:userId/orders/:status Endpoint tests
     describe("GET /users/:userId/orders/:status Endpoint tests", () => {
         it("responds with payload and status code 200", async () => {
             const response = await request
