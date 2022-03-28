@@ -73,8 +73,10 @@ Run database migration for dev environment
 Run lints
 
 ```bash
-  npm run lint
+  npm run lint:f
 ```
+
+##### Create a .env file in the project root directory, copy the Environment variables mentioned in the previous section and past them in the .env file.
 
 Build the project
 
@@ -82,23 +84,16 @@ Build the project
   npm run build
 ```
 
+Run automated tests
+
+```bash
+  npm run test
+```
+
 Start the server
 
 ```bash
   npm run start
-```
-
-After finishing with project if you want to destroy the database schema
-```bash
-  npm run migrate:down
-```
-    
-## Running Tests
-
-To run tests, run the following command
-
-```bash
-  npm run test
 ```
 
 
@@ -245,12 +240,12 @@ To run tests, run the following command
 
 ***
 
+### CLEAN UP
 
-
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
+After finishing with project if you want to destroy the database schema
+```bash
+  npm run migrate:down
+```
 
 
 ## Authors
