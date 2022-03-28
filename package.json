@@ -4,6 +4,8 @@
   "description": "storefront backend project",
   "main": "src/server.ts",
   "scripts": {
+    "migrate:up": "npx db-migrate up",
+    "migrate:down": "npx db-migrate reset",
     "lint": "npx eslint src/**",
     "lint:f": "npx eslint src/** --fix",
     "build": "npx tsc",
